@@ -10,6 +10,16 @@ body {
   background-color: blue;
   height: 100%;
   width: 20%;
+  text-align: center
+}
+
+.player-img {
+  width: 100px;
+  height: 100px;
+  margin-top: 5vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gameBoard-section {
