@@ -12,11 +12,19 @@ class Game {
     this.gameBoard[boardPosition] = this.currentPlayer.token;
   }
 
+  checkBoardEmpty(boardPosition) {
+    if(this.gameBoard[boardPosition] === " ") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   changePlayerTurn() {
     if(this.currentPlayer.id === this.playerOne.id) {
-      this.currentPlayer = this.playerOne;
-    } else {
       this.currentPlayer = this.playerTwo;
+    } else {
+      this.currentPlayer = this.playerOne;
     }
   }
 
