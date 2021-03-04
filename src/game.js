@@ -63,7 +63,13 @@ class Game {
   }
 
   checkForTie() {
-    
+    var isATie = true;
+    for (var i = 0; i < this.gameBoard.length; i++) {
+      if(this.gameBoard[i].includes(" ")) {
+        isATie = false;
+      }
+    }
+    return isATie;
   }
 
   resetGameBoard() {
