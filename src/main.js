@@ -1,16 +1,11 @@
-var playerOne = new Player({id: "playerOne", token: "testPlayerOne Token"});
-var playerTwo = new Player({id: "playerTwo", token: "testPlayer2 Token"});
+var playerOne = new Player({id: "playerOne", token: "X"});
+var playerTwo = new Player({id: "playerTwo", token: "O"});
 
 var testGame = new Game(playerOne, playerTwo);
 
-console.log(testGame.gameBoard);
-testGame.updateGameBoard(1);
-testGame.changePlayerTurn();
-console.log(testGame.isPlayerOnesTurn);
-
 testGame.updateGameBoard(0);
-testGame.changePlayerTurn();
-console.log(testGame.isPlayerOnesTurn);
-console.log(testGame.gameBoard);
-testGame.resetGameBoard();
-console.log(testGame.gameBoard);
+testGame.updateGameBoard(4);
+console.log(testGame.checkForWinner());
+testGame.updateGameBoard(7);
+
+console.log(testGame.checkForWinner());

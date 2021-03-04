@@ -20,6 +20,52 @@ class Game {
     this.isPlayerOnesTurn = !this.isPlayerOnesTurn;
   }
 
+  checkForWinner() {
+    if(this.isPlayerOnesTurn) {
+      var currentPlayersToken = this.playerOne;
+    } else {
+      var currentPlayersToken = this.playerTwo;
+    }
+    if(this.gameBoard[0] === currentPlayersToken.token &&
+        this.gameBoard[1] === currentPlayersToken.token &&
+        this.gameBoard[2] === currentPlayersToken.token) {
+          return true;
+        } else if (this.gameBoard[3] === currentPlayersToken.token &&
+          this.gameBoard[4] === currentPlayersToken.token &&
+          this.gameBoard[5] === currentPlayersToken.token) {
+            return true;
+        } else if (this.gameBoard[6] === currentPlayersToken.token &&
+          this.gameBoard[7] === currentPlayersToken.token &&
+          this.gameBoard[8] === currentPlayersToken.token) {
+            return true;
+        } else if (this.gameBoard[0] === currentPlayersToken.token &&
+          this.gameBoard[3] === currentPlayersToken.token &&
+          this.gameBoard[6] === currentPlayersToken.token) {
+            return true;
+        } else if (this.gameBoard[1] === currentPlayersToken.token &&
+          this.gameBoard[4] === currentPlayersToken.token &&
+          this.gameBoard[7] === currentPlayersToken.token) {
+            return true;
+        } else if (this.gameBoard[2] === currentPlayersToken.token &&
+          this.gameBoard[5] === currentPlayersToken.token &&
+          this.gameBoard[8] === currentPlayersToken.token) {
+            return true;
+        } else if (this.gameBoard[0] === currentPlayersToken.token &&
+          this.gameBoard[4] === currentPlayersToken.token &&
+          this.gameBoard[8] === currentPlayersToken.token) {
+            return true;
+        } else if (this.gameBoard[2] === currentPlayersToken.token &&
+          this.gameBoard[4] === currentPlayersToken.token &&
+          this.gameBoard[6] === currentPlayersToken.token) {
+              return true;
+        }
+        return false;
+  }
+
+  checkForTie() {
+    
+  }
+
   resetGameBoard() {
     this.gameBoard = [" ", " ", " ",
                       " ", " ", " ",
