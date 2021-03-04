@@ -62,6 +62,15 @@ class Game {
         return false;
   }
 
+  updatePlayerWins() {
+    if(this.isPlayerOnesTurn) {
+      this.playerOne.wins.push(this.gameBoard);
+      this.playerOne.saveWinsToStorage();
+    } else {
+      this.playerTwo.wins.push(this.gameBoard);
+      this.playerTwo.saveWinsToStorage();
+    }
+  }
   checkForTie() {
     var isATie = true;
     for (var i = 0; i < this.gameBoard.length; i++) {

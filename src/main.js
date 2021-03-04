@@ -14,4 +14,6 @@ testGame.updateGameBoard(7);
 testGame.updateGameBoard(8);
 
 
-console.log(testGame.checkForTie());
+testGame.updatePlayerWins();
+testGame.updatePlayerWins();
+console.log(testGame.playerOne.wins);
