@@ -5,65 +5,68 @@ class Game {
                       " ", " ", " "];
     this.playerOne = playerOne;
     this.playerTwo = playerTwo;
-    this.isPlayerOnesTurn = true;
+    this.currentPlayer = playerOne;
   }
 
   updateGameBoard(boardPosition) {
-    if(this.isPlayerOnesTurn) {
-      this.gameBoard[boardPosition] = playerOne.token;
+    this.gameBoard[boardPosition] = this.currentPlayer.token;
+  }
+
+  checkBoardEmpty(boardPosition) {
+    if(this.gameBoard[boardPosition] === " ") {
+      return true;
     } else {
-      this.gameBoard[boardPosition] = playerTwo.token;
+      return false;
     }
   }
 
   changePlayerTurn() {
-    this.isPlayerOnesTurn = !this.isPlayerOnesTurn;
+    if(this.currentPlayer.id === this.playerOne.id) {
+      this.currentPlayer = this.playerTwo;
+    } else {
+      this.currentPlayer = this.playerOne;
+    }
   }
 
   checkForWinner() {
-    if(this.isPlayerOnesTurn) {
-      var currentPlayersToken = this.playerOne;
-    } else {
-      var currentPlayersToken = this.playerTwo;
-    }
-    if(this.gameBoard[0] === currentPlayersToken.token &&
-        this.gameBoard[1] === currentPlayersToken.token &&
-        this.gameBoard[2] === currentPlayersToken.token) {
+    if(this.gameBoard[0] === this.currentPlayer.token &&
+        this.gameBoard[1] === this.currentPlayer.token &&
+        this.gameBoard[2] === this.currentPlayer.token) {
           return true;
-        } else if (this.gameBoard[3] === currentPlayersToken.token &&
-          this.gameBoard[4] === currentPlayersToken.token &&
-          this.gameBoard[5] === currentPlayersToken.token) {
+        } else if (this.gameBoard[3] === this.currentPlayer.token &&
+          this.gameBoard[4] === this.currentPlayer.token &&
+          this.gameBoard[5] === this.currentPlayer.token) {
             return true;
-        } else if (this.gameBoard[6] === currentPlayersToken.token &&
-          this.gameBoard[7] === currentPlayersToken.token &&
-          this.gameBoard[8] === currentPlayersToken.token) {
+        } else if (this.gameBoard[6] === this.currentPlayer.token &&
+          this.gameBoard[7] === this.currentPlayer.token &&
+          this.gameBoard[8] === this.currentPlayer.token) {
             return true;
-        } else if (this.gameBoard[0] === currentPlayersToken.token &&
-          this.gameBoard[3] === currentPlayersToken.token &&
-          this.gameBoard[6] === currentPlayersToken.token) {
+        } else if (this.gameBoard[0] === this.currentPlayer.token &&
+          this.gameBoard[3] === this.currentPlayer.token &&
+          this.gameBoard[6] === this.currentPlayer.token) {
             return true;
-        } else if (this.gameBoard[1] === currentPlayersToken.token &&
-          this.gameBoard[4] === currentPlayersToken.token &&
-          this.gameBoard[7] === currentPlayersToken.token) {
+        } else if (this.gameBoard[1] === this.currentPlayer.token &&
+          this.gameBoard[4] === this.currentPlayer.token &&
+          this.gameBoard[7] === this.currentPlayer.token) {
             return true;
-        } else if (this.gameBoard[2] === currentPlayersToken.token &&
-          this.gameBoard[5] === currentPlayersToken.token &&
-          this.gameBoard[8] === currentPlayersToken.token) {
+        } else if (this.gameBoard[2] === this.currentPlayer.token &&
+          this.gameBoard[5] === this.currentPlayer.token &&
+          this.gameBoard[8] === this.currentPlayer.token) {
             return true;
-        } else if (this.gameBoard[0] === currentPlayersToken.token &&
-          this.gameBoard[4] === currentPlayersToken.token &&
-          this.gameBoard[8] === currentPlayersToken.token) {
+        } else if (this.gameBoard[0] === this.currentPlayer.token &&
+          this.gameBoard[4] === this.currentPlayer.token &&
+          this.gameBoard[8] === this.currentPlayer.token) {
             return true;
-        } else if (this.gameBoard[2] === currentPlayersToken.token &&
-          this.gameBoard[4] === currentPlayersToken.token &&
-          this.gameBoard[6] === currentPlayersToken.token) {
+        } else if (this.gameBoard[2] === this.currentPlayer.token &&
+          this.gameBoard[4] === this.currentPlayer.token &&
+          this.gameBoard[6] === this.currentPlayer.token) {
               return true;
         }
         return false;
   }
 
   updatePlayerWins() {
-    if(this.isPlayerOnesTurn) {
+    if(this.currentPlayer.id === this.playerOne.id) {
       this.playerOne.wins.push(this.gameBoard);
       this.playerOne.saveWinsToStorage();
     } else {
@@ -85,5 +88,9 @@ class Game {
     this.gameBoard = [" ", " ", " ",
                       " ", " ", " ",
                       " ", " ", " "];
+  }
+
+  resetFirstPlayer() {
+    this.currentPlayer = this.playerOne;
   }
 }
