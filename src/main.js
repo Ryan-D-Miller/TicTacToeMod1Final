@@ -3,7 +3,7 @@ var boardHeader = document.querySelector("#boardHeader");
 var playerOneWins = document.querySelector("#playerOneWins");
 var playerTwoWins = document.querySelector("#playerTwoWins");
 
-var playerOne = new Player({id: "playerOne", token: "./assets/yoshiHead.jpg"});
+var playerOne = new Player({id: "playerOne", token: "./assets/yoshiHead.png"});
 var playerTwo = new Player({id: "playerTwo", token: "./assets/marioHead.png"});
 var game = new Game(playerOne, playerTwo);
 
