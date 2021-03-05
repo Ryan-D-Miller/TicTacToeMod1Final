@@ -37,6 +37,11 @@ body {
   align-items: center;
 }
 
+.header-token {
+  width: 18vh;
+  height: 18vh;
+}
+
 .board-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

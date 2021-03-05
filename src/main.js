@@ -1,4 +1,5 @@
 var spaces = document.querySelector("#boardGrid");
+var boardHeader = document.querySelector("#boardHeader");
 
 spaces.addEventListener("click", checkBoard);
 
@@ -29,6 +30,7 @@ function takeTurn(clickedPos, target) {
   game.updateGameBoard(clickedPos);
   updateToken(target);
   if(game.checkForWinner()) {
+    showWinner();
     console.log("Someone Won");
   } else if (game.checkForTie()){
     console.log("Its a tie");
@@ -41,6 +43,10 @@ function updateToken(target) {
   if(target.classList.contains("game-token")) {
     target.src = game.currentPlayer.token;
   } else {
-    target.nextChildElemnt.src = game.currentPlayer.token;
+    target.firstElementChild.src = game.currentPlayer.token;
   }
+}
+
+function showWinner() {
+  boardHeader.innerHTML = `<img class="header-token" src="${game.currentPlayer.token}"> has Won!`;
 }
