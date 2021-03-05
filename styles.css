@@ -1,6 +1,12 @@
+@font-face {
+  font-family: superMario;
+  src: url("./assets/SuperMario256.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
+  font-family: superMario;
 }
 body {
   display: flex;
@@ -48,6 +54,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: superMario;
+  font-size: 3em;
+  color: black;
 }
 
 .header-token {
