@@ -3,15 +3,18 @@ var boardHeader = document.querySelector("#boardHeader");
 var playerOneWins = document.querySelector("#playerOneWins");
 var playerTwoWins = document.querySelector("#playerTwoWins");
 
-spaces.addEventListener("click", checkBoard);
-
-
-
-
 var playerOne = new Player({id: "playerOne", token: "./assets/yoshiHead.jpg"});
 var playerTwo = new Player({id: "playerTwo", token: "./assets/marioHead.png"});
-
 var game = new Game(playerOne, playerTwo);
+
+window.addEventListener('load', retrieveAllStorage);
+spaces.addEventListener("click", checkBoard);
+
+function retrieveAllStorage() {
+  game.playerOne.retrieveWinsFromStorage();
+  game.playerTwo.retrieveWinsFromStorage();
+  displayPlayerWins();
+}
 
 function checkBoard(event) {
   var clickedPos = getClickedPosition(event.target);
