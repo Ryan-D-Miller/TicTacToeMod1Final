@@ -89,4 +89,8 @@ class Game {
                       " ", " ", " ",
                       " ", " ", " "];
   }
+
+  resetFirstPlayer() {
+    this.currentPlayer = this.playerOne;
+  }
 }

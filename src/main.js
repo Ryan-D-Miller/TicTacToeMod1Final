@@ -31,8 +31,10 @@ function takeTurn(clickedPos, target) {
   updateToken(target);
   if(game.checkForWinner()) {
     displayWinner();
+    var timeOut = window.setTimeout(resetGame, 3000);
   } else if (game.checkForTie()){
     displayTie();
+        var timeOut = window.setTimeout(resetGame, 3000);
   } else {
     game.changePlayerTurn();
     displayCurrentPlayer();
@@ -56,5 +58,23 @@ function displayCurrentPlayer() {
 }
 
 function displayTie() {
-boardHeader.innerHTML = `It's a Tie!`;
+  boardHeader.innerHTML = `It's a Tie!`;
+}
+
+function resetGame() {
+  game.resetGameBoard();
+  game.resetFirstPlayer();
+  resetBoardDisplay();
+  resetHeaderDisplay();
+}
+
+function resetBoardDisplay() {
+  var spaces = document.querySelectorAll(".game-token");
+  for (var i = 0; i < spaces.length; i++) {
+    spaces[i].src = "./assets/placeHolder.png";
+  }
+}
+
+function resetHeaderDisplay() {
+  boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
 }
