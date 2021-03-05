@@ -1,5 +1,7 @@
 var spaces = document.querySelector("#boardGrid");
 var boardHeader = document.querySelector("#boardHeader");
+var playerOneWins = document.querySelector("#playerOneWins");
+var playerTwoWins = document.querySelector("#playerTwoWins");
 
 spaces.addEventListener("click", checkBoard);
 
@@ -31,6 +33,8 @@ function takeTurn(clickedPos, target) {
   updateToken(target);
   if(game.checkForWinner()) {
     displayWinner();
+    game.updatePlayerWins();
+    displayPlayerWins();
     var timeOut = window.setTimeout(resetGame, 3000);
   } else if (game.checkForTie()){
     displayTie();
@@ -77,4 +81,9 @@ function resetBoardDisplay() {
 
 function resetHeaderDisplay() {
   boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
+}
+
+function displayPlayerWins() {
+  playerOneWins.innerText = `${game.playerOne.wins.length} Wins`;
+  playerTwoWins.innerText = `${game.playerTwo.wins.length} Wins`;
 }
