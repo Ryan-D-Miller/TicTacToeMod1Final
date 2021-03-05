@@ -30,10 +30,9 @@ function takeTurn(clickedPos, target) {
   game.updateGameBoard(clickedPos);
   updateToken(target);
   if(game.checkForWinner()) {
-    showWinner();
-    console.log("Someone Won");
+    displayWinner();
   } else if (game.checkForTie()){
-    console.log("Its a tie");
+    displayTie();
   } else {
     game.changePlayerTurn();
     displayCurrentPlayer();
@@ -48,10 +47,14 @@ function updateToken(target) {
   }
 }
 
-function showWinner() {
+function displayWinner() {
   boardHeader.innerHTML = `<img class="header-token" src="${game.currentPlayer.token}"> has Won!`;
 }
 
 function displayCurrentPlayer() {
   boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
+}
+
+function displayTie() {
+boardHeader.innerHTML = `It's a Tie!`;
 }
