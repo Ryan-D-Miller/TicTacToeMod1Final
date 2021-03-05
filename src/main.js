@@ -36,6 +36,7 @@ function takeTurn(clickedPos, target) {
     console.log("Its a tie");
   } else {
     game.changePlayerTurn();
+    displayCurrentPlayer();
   }
 }
 
@@ -49,4 +50,8 @@ function updateToken(target) {
 
 function showWinner() {
   boardHeader.innerHTML = `<img class="header-token" src="${game.currentPlayer.token}"> has Won!`;
+}
+
+function displayCurrentPlayer() {
+  boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
 }
