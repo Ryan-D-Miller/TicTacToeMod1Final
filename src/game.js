@@ -29,10 +29,10 @@ class Game {
   }
 
   checkForWinner() {
-    if(this.gameBoard[0] === this.currentPlayer.token &&
-        this.gameBoard[1] === this.currentPlayer.token &&
-        this.gameBoard[2] === this.currentPlayer.token) {
-          return true;
+        if(this.gameBoard[0] === this.currentPlayer.token &&
+          this.gameBoard[1] === this.currentPlayer.token &&
+          this.gameBoard[2] === this.currentPlayer.token) {
+            return true;
         } else if (this.gameBoard[3] === this.currentPlayer.token &&
           this.gameBoard[4] === this.currentPlayer.token &&
           this.gameBoard[5] === this.currentPlayer.token) {
