@@ -18,7 +18,7 @@ function retrieveAllStorage() {
 
 function checkBoard(event) {
   var clickedPos = getClickedPosition(event.target);
-  if(game.checkBoardEmpty(clickedPos)) {
+  if(game.checkBoardEmpty(clickedPos) && !game.hasWinner) {
     takeTurn(clickedPos, event.target);
   }
 }

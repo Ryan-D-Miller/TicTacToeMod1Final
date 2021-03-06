@@ -6,6 +6,7 @@ class Game {
     this.playerOne = playerOne;
     this.playerTwo = playerTwo;
     this.currentPlayer = playerOne;
+    this.hasWinner = false;
   }
 
   updateGameBoard(boardPosition) {
@@ -37,6 +38,7 @@ class Game {
         if (this.gameBoard[winCons[i][0]] === this.currentPlayer.token &&
             this.gameBoard[winCons[i][1]] === this.currentPlayer.token &&
             this.gameBoard[winCons[i][2]] === this.currentPlayer.token){
+              this.hasWinner = true;
               isWinner = true;
             }
     }
@@ -66,6 +68,7 @@ class Game {
     this.gameBoard = [" ", " ", " ",
                       " ", " ", " ",
                       " ", " ", " "];
+    this.hasWinner = false;
   }
 
   resetFirstPlayer() {
