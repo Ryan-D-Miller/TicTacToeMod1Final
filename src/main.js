@@ -3,9 +3,7 @@ var boardHeader = document.querySelector("#boardHeader");
 var playerOneWins = document.querySelector("#playerOneWins");
 var playerTwoWins = document.querySelector("#playerTwoWins");
 
-var playerOne = new Player({id: "playerOne", token: "./assets/yoshiHead.png"});
-var playerTwo = new Player({id: "playerTwo", token: "./assets/marioHead.png"});
-var game = new Game(playerOne, playerTwo);
+var game = new Game(new Player({id: "playerOne", token: "./assets/yoshiHead.png"}), new Player({id: "playerTwo", token: "./assets/marioHead.png"}));
 
 window.addEventListener('load', retrieveAllStorage);
 spaces.addEventListener("click", checkBoard);
