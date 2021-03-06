@@ -29,40 +29,18 @@ class Game {
   }
 
   checkForWinner() {
-        if(this.gameBoard[0] === this.currentPlayer.token &&
-          this.gameBoard[1] === this.currentPlayer.token &&
-          this.gameBoard[2] === this.currentPlayer.token) {
-            return true;
-        } else if (this.gameBoard[3] === this.currentPlayer.token &&
-          this.gameBoard[4] === this.currentPlayer.token &&
-          this.gameBoard[5] === this.currentPlayer.token) {
-            return true;
-        } else if (this.gameBoard[6] === this.currentPlayer.token &&
-          this.gameBoard[7] === this.currentPlayer.token &&
-          this.gameBoard[8] === this.currentPlayer.token) {
-            return true;
-        } else if (this.gameBoard[0] === this.currentPlayer.token &&
-          this.gameBoard[3] === this.currentPlayer.token &&
-          this.gameBoard[6] === this.currentPlayer.token) {
-            return true;
-        } else if (this.gameBoard[1] === this.currentPlayer.token &&
-          this.gameBoard[4] === this.currentPlayer.token &&
-          this.gameBoard[7] === this.currentPlayer.token) {
-            return true;
-        } else if (this.gameBoard[2] === this.currentPlayer.token &&
-          this.gameBoard[5] === this.currentPlayer.token &&
-          this.gameBoard[8] === this.currentPlayer.token) {
-            return true;
-        } else if (this.gameBoard[0] === this.currentPlayer.token &&
-          this.gameBoard[4] === this.currentPlayer.token &&
-          this.gameBoard[8] === this.currentPlayer.token) {
-            return true;
-        } else if (this.gameBoard[2] === this.currentPlayer.token &&
-          this.gameBoard[4] === this.currentPlayer.token &&
-          this.gameBoard[6] === this.currentPlayer.token) {
-              return true;
-        }
-        return false;
+    var winCons = [[0,1,2], [3,4,5], [6,7,8],
+                   [0,3,6], [1,4,7], [2,5,8],
+                   [0,4,8], [2,4,6]];
+    var isWinner = false
+    for (var i = 0; i < winCons.length; i++) {
+        if (this.gameBoard[winCons[i][0]] === this.currentPlayer.token &&
+            this.gameBoard[winCons[i][1]] === this.currentPlayer.token &&
+            this.gameBoard[winCons[i][2]] === this.currentPlayer.token){
+              isWinner = true;
+            }
+    }
+    return isWinner;
   }
 
   updatePlayerWins() {
