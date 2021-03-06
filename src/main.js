@@ -60,12 +60,17 @@ function displayWinner() {
   boardHeader.innerHTML = `<img class="header-token" src="${game.currentPlayer.token}"> has Won!`;
 }
 
-function displayCurrentPlayer() {
-  boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
+function displayPlayerWins() {
+  playerOneWins.innerText = `${game.playerOne.wins.length} Wins`;
+  playerTwoWins.innerText = `${game.playerTwo.wins.length} Wins`;
 }
 
 function displayTie() {
   boardHeader.innerHTML = `It's a Tie!`;
+}
+
+function displayCurrentPlayer() {
+  boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
 }
 
 function resetGame() {
@@ -84,9 +89,4 @@ function resetBoardDisplay() {
 
 function resetHeaderDisplay() {
   boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
-}
-
-function displayPlayerWins() {
-  playerOneWins.innerText = `${game.playerOne.wins.length} Wins`;
-  playerTwoWins.innerText = `${game.playerTwo.wins.length} Wins`;
 }

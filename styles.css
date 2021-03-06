@@ -84,6 +84,7 @@ body {
   align-items: center;
   width: 99%;
   height: 99%;
+  border: .25rem solid;
 }
 
 .space-0,
@@ -101,41 +102,4 @@ body {
 .space-7 {
   background-image: url("./assets/emptyBlockDark.png");
   background-size: 100% 100%;
-}
-
-
-.space-3,
-.space-4,
-.space-5
-.space-6,
-.space-7,
-.space-8 {
-  border-top: .25rem solid;
-}
-
-.space-0,
-.space-1,
-.space-3,
-.space-4,
-.space-6,
-.space-7{
-  border-right: .25rem solid;
-}
-
-.space-0,
-.space-1,
-.space-2,
-.space-3,
-.space-4,
-.space-5 {
-  border-bottom: .25rem solid;
-}
-
-.space-1,
-.space-2,
-.space-4,
-.space-5,
-.space-7,
-.space-8 {
-  border-left: .25rem solid;
 }
