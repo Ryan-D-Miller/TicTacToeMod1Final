@@ -71,6 +71,7 @@ body {
   align-items: center;
   width: 100%;
   height: 80%;
+  background: black;
 }
 
 .game-token {
