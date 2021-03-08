@@ -41,6 +41,7 @@ body {
 .drop-down {
   position: relative;
   display: inline-block;
+  margin: 25px 0;
 }
 
 .drop-down-content {
