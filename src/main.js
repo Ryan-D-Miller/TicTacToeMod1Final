@@ -40,7 +40,7 @@ function takeTurn(clickedPos, target) {
     var timeOut = window.setTimeout(resetGame, 3000);
   } else if (game.checkForTie()){
     displayTie();
-        var timeOut = window.setTimeout(resetGame, 3000);
+    var timeOut = window.setTimeout(resetGame, 3000);
   } else {
     game.changePlayerTurn();
     displayCurrentPlayer();
@@ -85,23 +85,16 @@ function resetGame() {
   game.resetFirstPlayer();
   resetBoardDisplay();
   resetHeaderDisplay();
-  resetCursor();
 }
 
 function resetBoardDisplay() {
   var spaces = document.querySelectorAll(".game-token");
   for (var i = 0; i < spaces.length; i++) {
     spaces[i].src = "./assets/placeHolder.png";
+    spaces[i].classList.add("pointer");
   }
 }
 
 function resetHeaderDisplay() {
   boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
-}
-
-function resetCursor() {
-  var spaces = document.querySelectorAll(".spaces");
-  for (var i = 0; i < spaces.length; i++) {
-    spaces[i].classList.add("pointer");
-  }
 }
