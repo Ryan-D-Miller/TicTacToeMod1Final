@@ -98,19 +98,12 @@ body {
   cursor: pointer;
 }
 
-.space-0,
-.space-2,
-.space-4,
-.space-6,
-.space-8 {
+.space-even {
   background-image: url("./assets/emptyBlockLight.gif");
   background-size: 100% 100%;
 }
 
-.space-1,
-.space-3,
-.space-5,
-.space-7 {
+.space-odd {
   background-image: url("./assets/emptyBlockDark.png");
   background-size: 100% 100%;
 }
