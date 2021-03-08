@@ -36,6 +36,35 @@ body {
   margin-right: auto;
 }
 
+/* character selection dropdown */
+
+.drop-down {
+  position: relative;
+  display: inline-block;
+}
+
+.drop-down-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  display: block;
+}
+
+.char-select {
+  cursor: pointer;
+}
+
+.drop-down-content a:hover {background-color: #ddd;}
+
+.drop-down:hover .drop-down-content {display: block;}
+
+.drop-down:hover .drop-down-button {background-color: #3e8e41;}
+
 /* board section */
 
 .gameBoard-section {

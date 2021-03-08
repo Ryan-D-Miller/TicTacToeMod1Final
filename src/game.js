@@ -14,7 +14,7 @@ class Game {
   }
 
   checkBoardEmpty(boardPosition) {
-    if(this.gameBoard[boardPosition] === " ") {
+    if (this.gameBoard[boardPosition] === " ") {
       return true;
     } else {
       return false;
@@ -22,16 +22,24 @@ class Game {
   }
 
   changePlayerTurn() {
-    if(this.currentPlayer.id === this.playerOne.id) {
+    if (this.currentPlayer.id === this.playerOne.id) {
       this.currentPlayer = this.playerTwo;
     } else {
       this.currentPlayer = this.playerOne;
     }
   }
 
+  refreshCurrentPlayerToken() {
+    if (this.currentPlayer.id === this.playerOne.id) {
+      this.currentPlayer = this.playerOne;
+    } else {
+      this.currentPlayer = this.playerTwo;
+    }
+  }
+
   selectStartingPlayer() {
     var rdmNumber = Math.floor(Math.random() * Math.floor(2));
-    if(rdmNumber === 0) {
+    if (rdmNumber === 0) {
       this.currentPlayer = this.playerOne;
     } else {
       this.currentPlayer = this.playerTwo;
@@ -55,7 +63,7 @@ class Game {
   }
 
   updatePlayerWins() {
-    if(this.currentPlayer.id === this.playerOne.id) {
+    if (this.currentPlayer.id === this.playerOne.id) {
       this.playerOne.wins.push(this.gameBoard);
       this.playerOne.saveWinsToStorage();
     } else {
@@ -66,7 +74,7 @@ class Game {
   checkForTie() {
     var isATie = true;
     for (var i = 0; i < this.gameBoard.length; i++) {
-      if(this.gameBoard[i].includes(" ")) {
+      if (this.gameBoard[i].includes(" ")) {
         isATie = false;
       }
     }

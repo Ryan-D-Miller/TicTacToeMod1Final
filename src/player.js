@@ -18,4 +18,8 @@ class Player {
       this.saveWinsToStorage();
     }
   }
+
+  changeToken(token) {
+    this.token = token;
+  }
 }
