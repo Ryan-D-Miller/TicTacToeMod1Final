@@ -4,6 +4,8 @@ var playerOneWins = document.querySelector("#playerOneWins");
 var playerTwoWins = document.querySelector("#playerTwoWins");
 var playerOneSelection = document.querySelector("#playerOneCharSelection");
 var playerTwoSelection = document.querySelector("#playerTwoCharSelection");
+var playerOneImg = document.querySelector("#playerOneImg");
+var playerTwoImg = document.querySelector("#playerTwoImg");
 
 var game = new Game(new Player({id: "playerOne", token: "./assets/yoshiHead.png"}), new Player({id: "playerTwo", token: "./assets/marioHead.png"}));
 window.addEventListener('load', retrieveAllStorage);
@@ -21,6 +23,14 @@ function characterSelection(event, player) {
 
 function changeCharacter(token, player) {
     game[player].changeToken(token);
+    game.refreshCurrentPlayerToken();
+    resetHeaderDisplay();
+    resetPlayerTokens();
+}
+
+function resetPlayerTokens() {
+  playerOneImg.src = game.playerOne.token;
+  playerTwoImg.src = game.playerTwo.token;
 }
 
 function retrieveAllStorage() {
