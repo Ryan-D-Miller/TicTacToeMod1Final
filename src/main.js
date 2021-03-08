@@ -3,9 +3,7 @@ var boardHeader = document.querySelector("#boardHeader");
 var playerOneWins = document.querySelector("#playerOneWins");
 var playerTwoWins = document.querySelector("#playerTwoWins");
 
-var playerOne = new Player({id: "playerOne", token: "./assets/yoshiHead.png"});
-var playerTwo = new Player({id: "playerTwo", token: "./assets/marioHead.png"});
-var game = new Game(playerOne, playerTwo);
+var game = new Game(new Player({id: "playerOne", token: "./assets/yoshiHead.png"}), new Player({id: "playerTwo", token: "./assets/marioHead.png"}));
 
 window.addEventListener('load', retrieveAllStorage);
 spaces.addEventListener("click", checkBoard);
@@ -18,7 +16,7 @@ function retrieveAllStorage() {
 
 function checkBoard(event) {
   var clickedPos = getClickedPosition(event.target);
-  if(game.checkBoardEmpty(clickedPos)) {
+  if(game.checkBoardEmpty(clickedPos) && !game.hasWinner) {
     takeTurn(clickedPos, event.target);
   }
 }
@@ -34,6 +32,7 @@ function getClickedPosition(target) {
 function takeTurn(clickedPos, target) {
   game.updateGameBoard(clickedPos);
   updateToken(target);
+  changePointer(target);
   if(game.checkForWinner()) {
     displayWinner();
     game.updatePlayerWins();
@@ -41,7 +40,7 @@ function takeTurn(clickedPos, target) {
     var timeOut = window.setTimeout(resetGame, 3000);
   } else if (game.checkForTie()){
     displayTie();
-        var timeOut = window.setTimeout(resetGame, 3000);
+    var timeOut = window.setTimeout(resetGame, 3000);
   } else {
     game.changePlayerTurn();
     displayCurrentPlayer();
@@ -56,16 +55,29 @@ function updateToken(target) {
   }
 }
 
+function changePointer(target) {
+  if(target.classList.contains("spaces")) {
+    target.classList.remove("pointer");
+  } else {
+    target.parentElement.classList.remove("pointer");
+  }
+}
+
 function displayWinner() {
   boardHeader.innerHTML = `<img class="header-token" src="${game.currentPlayer.token}"> has Won!`;
 }
 
-function displayCurrentPlayer() {
-  boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
+function displayPlayerWins() {
+  playerOneWins.innerText = `${game.playerOne.wins.length} Wins`;
+  playerTwoWins.innerText = `${game.playerTwo.wins.length} Wins`;
 }
 
 function displayTie() {
   boardHeader.innerHTML = `It's a Tie!`;
+}
+
+function displayCurrentPlayer() {
+  boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
 }
 
 function resetGame() {
@@ -79,14 +91,10 @@ function resetBoardDisplay() {
   var spaces = document.querySelectorAll(".game-token");
   for (var i = 0; i < spaces.length; i++) {
     spaces[i].src = "./assets/placeHolder.png";
+    spaces[i].classList.add("pointer");
   }
 }
 
 function resetHeaderDisplay() {
   boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
-}
-
-function displayPlayerWins() {
-  playerOneWins.innerText = `${game.playerOne.wins.length} Wins`;
-  playerTwoWins.innerText = `${game.playerTwo.wins.length} Wins`;
 }
