@@ -2,10 +2,26 @@ var spaces = document.querySelector("#boardGrid");
 var boardHeader = document.querySelector("#boardHeader");
 var playerOneWins = document.querySelector("#playerOneWins");
 var playerTwoWins = document.querySelector("#playerTwoWins");
+var playerOneSelection = document.querySelector("#playerOneCharSelection");
+var playerTwoSelection = document.querySelector("#playerTwoCharSelection");
 
 var game = new Game(new Player({id: "playerOne", token: "./assets/yoshiHead.png"}), new Player({id: "playerTwo", token: "./assets/marioHead.png"}));
 window.addEventListener('load', retrieveAllStorage);
 spaces.addEventListener("click", checkBoard);
+playerOneSelection.addEventListener("click", function (){
+  characterSelection(event, "playerOne")});
+playerTwoSelection.addEventListener("click", function (){
+  characterSelection(event, "playerTwo")});
+
+function characterSelection(event, player) {
+  if (event.target.classList.contains("player-img")) {
+    changeCharacter(event.target.dataset.img, player);
+  }
+}
+
+function changeCharacter(token, player) {
+    game[player].changeToken(token);
+}
 
 function retrieveAllStorage() {
   game.playerOne.retrieveWinsFromStorage();
