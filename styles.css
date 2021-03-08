@@ -94,6 +94,10 @@ body {
   border: .25rem solid;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .space-0,
 .space-2,
 .space-4,

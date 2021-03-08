@@ -32,6 +32,7 @@ function getClickedPosition(target) {
 function takeTurn(clickedPos, target) {
   game.updateGameBoard(clickedPos);
   updateToken(target);
+  changePointer(target);
   if(game.checkForWinner()) {
     displayWinner();
     game.updatePlayerWins();
@@ -51,6 +52,14 @@ function updateToken(target) {
     target.src = game.currentPlayer.token;
   } else {
     target.firstElementChild.src = game.currentPlayer.token;
+  }
+}
+
+function changePointer(target) {
+  if(target.classList.contains("spaces")) {
+    target.classList.remove("pointer");
+  } else {
+    target.parentElement.classList.remove("pointer");
   }
 }
 
@@ -76,6 +85,7 @@ function resetGame() {
   game.resetFirstPlayer();
   resetBoardDisplay();
   resetHeaderDisplay();
+  resetCursor();
 }
 
 function resetBoardDisplay() {
@@ -87,4 +97,11 @@ function resetBoardDisplay() {
 
 function resetHeaderDisplay() {
   boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
+}
+
+function resetCursor() {
+  var spaces = document.querySelectorAll(".spaces");
+  for (var i = 0; i < spaces.length; i++) {
+    spaces[i].classList.add("pointer");
+  }
 }
