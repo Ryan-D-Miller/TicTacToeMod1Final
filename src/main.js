@@ -4,13 +4,13 @@ var playerOneWins = document.querySelector("#playerOneWins");
 var playerTwoWins = document.querySelector("#playerTwoWins");
 
 var game = new Game(new Player({id: "playerOne", token: "./assets/yoshiHead.png"}), new Player({id: "playerTwo", token: "./assets/marioHead.png"}));
-
 window.addEventListener('load', retrieveAllStorage);
 spaces.addEventListener("click", checkBoard);
 
 function retrieveAllStorage() {
   game.playerOne.retrieveWinsFromStorage();
   game.playerTwo.retrieveWinsFromStorage();
+  resetGame();
   displayPlayerWins();
 }
 
@@ -81,8 +81,8 @@ function displayCurrentPlayer() {
 }
 
 function resetGame() {
+  game.selectStartingPlayer();
   game.resetGameBoard();
-  game.resetFirstPlayer();
   resetBoardDisplay();
   resetHeaderDisplay();
 }

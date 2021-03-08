@@ -29,6 +29,15 @@ class Game {
     }
   }
 
+  selectStartingPlayer() {
+    var rdmNumber = Math.floor(Math.random() * Math.floor(2));
+    if(rdmNumber === 0) {
+      this.currentPlayer = this.playerOne;
+    } else {
+      this.currentPlayer = this.playerTwo;
+    }
+  }
+
   checkForWinner() {
     var winCons = [[0,1,2], [3,4,5], [6,7,8],
                    [0,3,6], [1,4,7], [2,5,8],
@@ -69,9 +78,5 @@ class Game {
                       " ", " ", " ",
                       " ", " ", " "];
     this.hasWinner = false;
-  }
-
-  resetFirstPlayer() {
-    this.currentPlayer = this.playerOne;
   }
 }
