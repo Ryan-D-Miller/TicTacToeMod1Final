@@ -36,6 +36,49 @@ body {
   margin-right: auto;
 }
 
+/* character selection dropdown */
+
+.drop-down {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.drop-down-button {
+  padding: 15px;
+  background: #F4AE41;
+  border-color: #E45C13;
+}
+
+.drop-down-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  z-index: 1;
+  margin-top: 30px;
+  background-image: url("./assets/yoshisIslandSpin.gif");
+  background-size: 100% 100%;
+}
+
+.char-select {
+  cursor: pointer;
+}
+
+.drop-down-content a:hover {
+  background-color: #ddd;
+}
+
+.drop-down:hover .drop-down-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.selected {
+  opacity: .50;
+  cursor: default;
+}
+
 /* board section */
 
 .gameBoard-section {
@@ -81,7 +124,7 @@ body {
 }
 
 .game-token {
-  width: 75%;
+  width: 55%;
   height: 75%;
 }
 
@@ -106,4 +149,8 @@ body {
 .space-odd {
   background-image: url("./assets/emptyBlockDark.png");
   background-size: 100% 100%;
+}
+
+.hidden {
+  display: none;
 }
