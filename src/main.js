@@ -121,7 +121,7 @@ function showCharacterSelection() {
 
 function characterSelection(event, player) {
   if (event.target.classList.contains("player-img")) {
-    changeCharacter(event.target.dataset.img, player);
+    changeCharacter(event.target.parentElement.dataset.img, player);
   }
 
 }
@@ -132,11 +132,13 @@ function changeCharacter(token, player) {
     game.refreshCurrentPlayerToken();
     resetHeaderDisplay();
     resetPlayerTokens();
+    showHideSelectedChar("#p1CharSelect");
+    showHideSelectedChar("#p2CharSelect");
   }
 }
 
 function checkPlayerTokens(token) {
-    if(token === game.playerOne.token || token === game.playerTwo.token) {
+    if (token === game.playerOne.token || token === game.playerTwo.token) {
       return false;
     } else {
       return true;
@@ -146,4 +148,15 @@ function checkPlayerTokens(token) {
 function resetPlayerTokens() {
   playerOneImg.src = game.playerOne.token;
   playerTwoImg.src = game.playerTwo.token;
+}
+
+function showHideSelectedChar(playerSelection) {
+  var charSelect = document.querySelectorAll(playerSelection);
+  for (var i = 0; i < charSelect.length; i++) {
+    if(charSelect[i].dataset.img === game.playerOne.token || charSelect[i].dataset.img === game.playerTwo.token) {
+      charSelect[i].classList.add("hidden");
+    } else {
+      charSelect[i].classList.remove("hidden");
+    }
+  }
 }
