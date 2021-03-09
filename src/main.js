@@ -154,9 +154,9 @@ function showHideSelectedChar(playerSelection) {
   var charSelect = document.querySelectorAll(playerSelection);
   for (var i = 0; i < charSelect.length; i++) {
     if(charSelect[i].dataset.img === game.playerOne.token || charSelect[i].dataset.img === game.playerTwo.token) {
-      charSelect[i].classList.add("hidden");
+      charSelect[i].classList.add("selected");
     } else {
-      charSelect[i].classList.remove("hidden");
+      charSelect[i].classList.remove("selected");
     }
   }
 }
