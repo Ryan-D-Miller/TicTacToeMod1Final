@@ -111,7 +111,7 @@ body {
 }
 
 .game-token {
-  width: 75%;
+  width: 55%;
   height: 75%;
 }
 
@@ -136,4 +136,8 @@ body {
 .space-odd {
   background-image: url("./assets/emptyBlockDark.png");
   background-size: 100% 100%;
+}
+
+.hidden {
+  display: none;
 }

@@ -15,24 +15,6 @@ playerOneSelection.addEventListener("click", function (){
 playerTwoSelection.addEventListener("click", function (){
   characterSelection(event, "playerTwo")});
 
-function characterSelection(event, player) {
-  if (event.target.classList.contains("player-img")) {
-    changeCharacter(event.target.dataset.img, player);
-  }
-}
-
-function changeCharacter(token, player) {
-    game[player].changeToken(token);
-    game.refreshCurrentPlayerToken();
-    resetHeaderDisplay();
-    resetPlayerTokens();
-}
-
-function resetPlayerTokens() {
-  playerOneImg.src = game.playerOne.token;
-  playerTwoImg.src = game.playerTwo.token;
-}
-
 function retrieveAllStorage() {
   game.playerOne.retrieveWinsFromStorage();
   game.playerTwo.retrieveWinsFromStorage();
@@ -56,6 +38,7 @@ function getClickedPosition(target) {
 }
 
 function takeTurn(clickedPos, target) {
+  removeCharacterSelection();
   game.updateGameBoard(clickedPos);
   updateToken(target);
   changePointer(target);
@@ -71,6 +54,11 @@ function takeTurn(clickedPos, target) {
     game.changePlayerTurn();
     displayCurrentPlayer();
   }
+}
+
+function removeCharacterSelection() {
+  playerOneCharSelection.classList.add("hidden");
+  playerTwoCharSelection.classList.add("hidden");
 }
 
 function updateToken(target) {
@@ -111,6 +99,7 @@ function resetGame() {
   game.resetGameBoard();
   resetBoardDisplay();
   resetHeaderDisplay();
+  showCharacterSelection();
 }
 
 function resetBoardDisplay() {
@@ -123,4 +112,27 @@ function resetBoardDisplay() {
 
 function resetHeaderDisplay() {
   boardHeader.innerHTML = `It's <img class="header-token" src="${game.currentPlayer.token}"> Turn!`;
+}
+
+function showCharacterSelection() {
+  playerOneCharSelection.classList.remove("hidden");
+  playerTwoCharSelection.classList.remove("hidden");
+}
+
+function characterSelection(event, player) {
+  if (event.target.classList.contains("player-img")) {
+    changeCharacter(event.target.dataset.img, player);
+  }
+}
+
+function changeCharacter(token, player) {
+    game[player].changeToken(token);
+    game.refreshCurrentPlayerToken();
+    resetHeaderDisplay();
+    resetPlayerTokens();
+}
+
+function resetPlayerTokens() {
+  playerOneImg.src = game.playerOne.token;
+  playerTwoImg.src = game.playerTwo.token;
 }
