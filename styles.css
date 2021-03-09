@@ -60,11 +60,18 @@ body {
   cursor: pointer;
 }
 
-.drop-down-content a:hover {background-color: #ddd;}
+.drop-down-content a:hover {
+  background-color: #ddd;
+}
 
-.drop-down:hover .drop-down-content {display: block;}
+.drop-down:hover .drop-down-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 
-.drop-down:hover .drop-down-button {background-color: #3e8e41;}
+.drop-down:hover .drop-down-button {
+  background-color: #3e8e41;
+}
 
 /* board section */
 
