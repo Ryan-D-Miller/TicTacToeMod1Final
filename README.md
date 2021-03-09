@@ -31,6 +31,10 @@
 
 
 ## Preview
-<p align="left">Create Idea Page</br>
- <img width="1000" height="500" src="./assets/IdeaMain.png">
+<p align="left">Main Game Play</br>
+ <img width="1000" height="500" src="./assets/basicGamePlay.gif">
+</p>
+
+<p align="left">Character Selection</br>
+ <img width="1000" height="500" src="./assets/CharSelect.gif">
 </p>
