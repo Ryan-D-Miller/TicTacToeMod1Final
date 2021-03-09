@@ -123,13 +123,24 @@ function characterSelection(event, player) {
   if (event.target.classList.contains("player-img")) {
     changeCharacter(event.target.dataset.img, player);
   }
+
 }
 
 function changeCharacter(token, player) {
+  if (checkPlayerTokens(token)) {
     game[player].changeToken(token);
     game.refreshCurrentPlayerToken();
     resetHeaderDisplay();
     resetPlayerTokens();
+  }
+}
+
+function checkPlayerTokens(token) {
+    if(token === game.playerOne.token || token === game.playerTwo.token) {
+      return false;
+    } else {
+      return true;
+    }
 }
 
 function resetPlayerTokens() {
