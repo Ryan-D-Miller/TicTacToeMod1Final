@@ -40,7 +40,8 @@ body {
 
 .drop-down {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   margin: 25px 0;
 }
 
@@ -49,6 +50,7 @@ body {
   position: absolute;
   background-color: #f1f1f1;
   z-index: 1;
+  margin-top: 15px;
 }
 
 .char-select {
